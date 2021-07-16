@@ -10,6 +10,9 @@ class App {
     router.get("/", (req, res) => {
       res.json({ message: "Go away, world!" });
     });
+    router.get("/about", function (req, res) {
+      res.send("about");
+    });
     this.express.use("/", router);
   }
 }
