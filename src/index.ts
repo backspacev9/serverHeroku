@@ -6,5 +6,6 @@ app.listen(port, (err) => {
     process.abort();
   }
   console.log(`Server is listening on port ${port}.`);
+  console.log(`Ev Port ${process.env.PORT}.`);
   return;
 });
