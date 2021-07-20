@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 dotenv.config({ path: __dirname + "/.env" });
 
-const client = new MongoClient(process.env.MONGODB_URI);
+//const client = new MongoClient(process.env.MONGODB_URI);
 
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
@@ -38,17 +38,17 @@ class App {
     });
 
     //Mongo data base 123
-    router.get("/db", async function (req, res) {
-      await client.connect().then(async () => {
-        console.log("connected");
-        const categories = client.db().collection("category").find();
-        let arrCat = [];
-        await categories.forEach((el) => {
-          arrCat.push(el);
-        });
-        res.send(arrCat);
-      });
-    });
+    // router.get("/db", async function (req, res) {
+    //   await client.connect().then(async () => {
+    //     console.log("connected");
+    //     const categories = client.db().collection("category").find();
+    //     let arrCat = [];
+    //     await categories.forEach((el) => {
+    //       arrCat.push(el);
+    //     });
+    //     res.send(arrCat);
+    //   });
+    // });
 
     this.express.use("/", router);
   }
