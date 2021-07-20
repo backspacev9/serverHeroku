@@ -39,7 +39,7 @@ class App {
       res.send(ids);
     });
 
-    //Mongo data base
+    //Mongo data base asd zxc
     router.get("/db", async function (req, res) {
       await client.connect().then(async () => {
         console.log("connected");
@@ -55,4 +55,5 @@ class App {
     this.express.use("/", router);
   }
 }
+
 export default new App().express;
