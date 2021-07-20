@@ -39,7 +39,7 @@ class App {
       res.send(ids);
     });
 
-    //Mongo data base asd zxc
+    //Mongo data base
     router.get("/db", async function (req, res) {
       await client.connect().then(async () => {
         console.log("connected");
