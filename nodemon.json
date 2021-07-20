@@ -1,0 +1,7 @@
+{
+    "verbose": false,
+    "ignore": ["node_module"],
+    "watch": ["src"],
+    "exec": ["tsc"],
+    "ext": "ts, js"
+}
