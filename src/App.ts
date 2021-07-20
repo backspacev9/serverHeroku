@@ -3,9 +3,7 @@ import * as dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 dotenv.config({ path: __dirname + "/.env" });
 
-const client = new MongoClient(
-  "mongodb+srv://user:testUser@cluster0.spcqv.mongodb.net/EFKDB"
-);
+const client = new MongoClient(process.env.MONGODB_URI);
 
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
