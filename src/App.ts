@@ -27,7 +27,7 @@ class App {
       res.json({ message: "Go away, world!" });
     });
 
-    ///cloudinary 123345
+    ///cloudinary 123345ccc
     router.get("/images", async function (req, res) {
       const { resources } = await cloudinary.search
         .expression("folder:cards")
