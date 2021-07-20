@@ -40,17 +40,17 @@ class App {
     });
 
     //Mongo data base 123
-    // router.get("/db", async function (req, res) {
-    //   await client.connect().then(async () => {
-    //     console.log("connected");
-    //     const categories = client.db().collection("category").find();
-    //     let arrCat = [];
-    //     await categories.forEach((el) => {
-    //       arrCat.push(el);
-    //     });
-    //     res.send(arrCat);
-    //   });
-    // });
+    router.get("/db", async function (req, res) {
+      await client.connect().then(async () => {
+        console.log("connected");
+        const categories = client.db().collection("category").find();
+        let arrCat = [];
+        await categories.forEach((el) => {
+          arrCat.push(el);
+        });
+        res.send(arrCat);
+      });
+    });
 
     this.express.use("/", router);
   }
