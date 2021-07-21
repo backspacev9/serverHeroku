@@ -37,7 +37,7 @@ class App {
       res.send(ids);
     });
 
-    //Mongo data base 12343
+    //Mongo data base
     router.get("/db", async function (req, res) {
       await client.connect().then(async () => {
         console.log("connected");
