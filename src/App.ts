@@ -45,10 +45,7 @@ class App {
         let catId = Number(req.params.id);
         let arrCards = [];
         if (!catId) {
-          const cards = client
-            .db()
-            .collection("cards")
-            .find({ categoryId: catId });
+          const cards = client.db().collection("cards").find({ categoryId: 1 });
           await cards.forEach((el) => {
             arrCards.push(el);
           });
