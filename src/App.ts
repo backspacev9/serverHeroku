@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as dotenv from "dotenv";
 import { MongoClient } from "mongodb";
+import * as Constants from "./constants";
 dotenv.config({ path: __dirname + "/.env" });
 
 const client = new MongoClient(process.env.MONGODB_URI);
@@ -38,7 +39,28 @@ class App {
     });
 
     //Mongo data base
-    router.get("/db", async function (req, res) {
+    router.get("/db/cards:id", async function (req, res) {
+      await client.connect().then(async () => {
+        console.log("connected");
+        let catId = Number(req.params.id);
+        let arrCards = [];
+        if (!catId) {
+          const cards = client
+            .db()
+            .collection("cards")
+            .find({ categoryId: catId });
+          await cards.forEach((el) => {
+            arrCards.push(el);
+          });
+          res.send(arrCards);
+        } else {
+          return res.status(404);
+        }
+      });
+      client.close();
+    });
+
+    router.get("/db/categories", async function (req, res) {
       await client.connect().then(async () => {
         console.log("connected");
         const categories = client.db().collection("category").find();
@@ -48,6 +70,7 @@ class App {
         });
         res.send(arrCat);
       });
+      client.close();
     });
 
     this.express.use("/", router);
